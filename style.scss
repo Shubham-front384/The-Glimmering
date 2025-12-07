@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+@font-face {
+  font-family: "owners-xwide";
+  src: url("./font/owners-xwide.ttf");
+}
+
+:root {
+  --color-raspberry: #db1368;
+  --color-dark-raspberry: #ad2960;
+  --color-dark-rasp: #d72b59;
+  --color-lemonade: linear-gradient(90deg,#d72b59,#fbe851);
+  --color-pink-bone: linear-gradient(90deg,#ece9d4,#db1368);
+  --color-burnt-sienna: #e86f4d;
+  --color-eggplant: #191024;
+  --color-ivory: #ece9d4;
+  --color-error: #e84f4f;
+  --color-success: #5adb6b;
+  --font-header: "owners-xwide";
+  --font-body: "Space Grotesk", sans-serif;
+  --font-size-h1-xs: 1.5rem;
+  --font-size-h1-sm: 2rem;
+  --font-size-h1-lg: 3.5rem;
+  --font-size-h2-sm: 1.1rem;
+  --font-size-h2-lg: 1.5rem;
+  --font-size-p-sm: 1.1rem;
+  --font-size-p-lg: 1.5rem;
+  --screen-sm: 426px;
+  --screen-md: 769px;
+  --spacing-xs: 1rem;
+  --spacing-sm: 2.5rem;
+  --spacing-md: 5rem;
+  --spacing-lg: 7.5rem;
+  --spacing-xl: 10rem;
+  --box-shadow-name-tag: 0px 3px 17px rgba(0,0,0,.45);
+  --padding: 43.367px;
+  --padding-top-first: 24px;
+  --padding-top-second: 30px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: var(--color-eggplant);
+  color: var(--color-ivory);
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+}
+
+@mixin flexProperty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Header
+header {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  padding: var(--padding-top-first) var(--padding-top-second) 0;
+  @include flexProperty();
+
+  aside {
+    a {
+      button {
+        background: transparent;
+        backdrop-filter: none;
+        border: none;
+        outline: none;
+
+        span {
+          font-family: "owners-xwide";
+          font-size: .5625rem;
+          letter-spacing: .1em;
+          padding: 9.5px 9px 7.5px;
+          text-transform: uppercase;
+          color: #fafafa;
+          display: inline-flex;
+          align-items: center;
+          vertical-align: middle;
+          border: 2px solid var(--color-dark-rasp);
+          border-radius: 43px;
+        }
+      }
+    }
+  }
+
+  aside {
+    a {
+      img {
+        opacity: 0;
+      }
+    }
+  }
+
+  aside {
+    button {
+      background: none;
+      outline: none;
+      border: none;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+
+      .btn-icon {
+        position: relative;
+
+        .icon-to-open {
+          svg {
+            width: 25px;
+            height: 25px;
+          }
+        }
+
+        .icon-to-close {
+          position: absolute;
+          top: 0;
+
+          svg {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      }
+
+      .btn-label {
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.home-section {
+  @include flexProperty();
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+  height: calc((var(--vh, 1vh) * 100) - 80px);
+  max-height: 620px;
+  min-height: 568px;
+  overflow: visible;
+  padding: 120px 0 180px;
+
+  .hero_canvas {
+    .canvas_content {
+      position: relative;
+      z-index: 3;
+
+      .gripnr-img {
+        padding: 0 1.3rem;
+      }
+    }
+
+    .canvas_media {
+      video {
+        width: calc(100% + 10px);
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        object-position: center top;
+        // inset: -10px 0px 0px;
+        z-index: 1;
+      }
+    }
+
+    .canvas_media::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 100%;
+      
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.4) 40%,
+        rgba(0, 0, 0, 0.7) 100%
+      );
+
+      z-index: 2;
+      pointer-events: none;
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  // Header
+  header {
+    aside {
+      button {
+        .btn-label {
+          span {
+            display: block;
+            color: #fafafa;
+            text-transform: uppercase;
+            letter-spacing: .125em;
+            font-size: .9375rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+}
