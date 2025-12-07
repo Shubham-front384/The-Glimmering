@@ -7,8 +7,8 @@
   --color-raspberry: #db1368;
   --color-dark-raspberry: #ad2960;
   --color-dark-rasp: #d72b59;
-  --color-lemonade: linear-gradient(90deg,#d72b59,#fbe851);
-  --color-pink-bone: linear-gradient(90deg,#ece9d4,#db1368);
+  --color-lemonade: linear-gradient(90deg, #d72b59, #fbe851);
+  --color-pink-bone: linear-gradient(90deg, #ece9d4, #db1368);
   --color-burnt-sienna: #e86f4d;
   --color-eggplant: #191024;
   --color-ivory: #ece9d4;
@@ -30,10 +30,11 @@
   --spacing-md: 5rem;
   --spacing-lg: 7.5rem;
   --spacing-xl: 10rem;
-  --box-shadow-name-tag: 0px 3px 17px rgba(0,0,0,.45);
+  --box-shadow-name-tag: 0px 3px 17px rgba(0, 0, 0, 0.45);
   --padding: 43.367px;
   --padding-top-first: 24px;
-  --padding-top-second: 30px;
+  --padding-top-second: 20.6px;
+  --vh: 9.15px;
 }
 
 * {
@@ -42,7 +43,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   background: var(--color-eggplant);
@@ -125,24 +127,75 @@ header aside button .btn-label span {
 }
 
 .home-section {
+  display: block;
+  position: relative;
+  text-align: center;
+}
+.home-section .hero_canvas {
   display: flex;
   align-items: center;
   justify-content: space-between;
   justify-content: center;
-  position: relative;
-  z-index: 0;
+  flex-direction: column;
   height: calc(var(--vh, 1vh) * 100 - 80px);
   max-height: 620px;
   min-height: 568px;
   overflow: visible;
   padding: 120px 0 180px;
+  position: relative;
+  z-index: 0;
 }
 .home-section .hero_canvas .canvas_content {
+  padding: 30px 5vw;
   position: relative;
+  width: 100%;
   z-index: 3;
 }
-.home-section .hero_canvas .canvas_content .gripnr-img {
-  padding: 0 1.3rem;
+.home-section .hero_canvas .canvas_content .gripnr-details .content_heading {
+  margin: 30px auto 0;
+  filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
+  text-transform: uppercase;
+  font-family: var(--font-header);
+  background: var(--color-lemonade);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-flex;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  line-height: 1em;
+  font-size: 1.125rem;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+.home-section .hero_canvas .canvas_content .gripnr-details .content_sub_heading {
+  display: inline-flex;
+  margin: 14px 18.542px 0;
+  text-transform: uppercase;
+  text-align: center;
+  color: #eae5d0;
+  letter-spacing: 0.15em;
+  font-size: 1rem;
+  line-height: 1em;
+  font-weight: 200;
+}
+.home-section .hero_canvas .canvas_content .gripnr-details .content_btn {
+  margin-top: 30px;
+  text-align: center;
+}
+.home-section .hero_canvas .canvas_content .gripnr-details .content_btn .btn_link span {
+  font-family: "owners-xwide";
+  font-size: 0.5625rem;
+  letter-spacing: 0.1em;
+  padding: 9.5px 9px 7.5px;
+  text-transform: uppercase;
+  color: #fafafa;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  border: 2px solid var(--color-dark-rasp);
+  border-radius: 43px;
 }
 .home-section .hero_canvas .canvas_media video {
   width: calc(100% + 10px);
@@ -170,6 +223,22 @@ header aside button .btn-label span {
 
 /* Tablet */
 @media (min-width: 768px) {
+  header {
+    padding: 24px 31.297px 0;
+  }
+  header aside a button span {
+    font-family: "owners-xwide";
+    font-size: 0.7375rem;
+    letter-spacing: 0.1em;
+    padding: 9.5px 9px 7.5px;
+    text-transform: uppercase;
+    color: #fafafa;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    border: 2px solid var(--color-dark-rasp);
+    border-radius: 43px;
+  }
   header aside button .btn-label span {
     display: block;
     color: #fafafa;
@@ -177,5 +246,77 @@ header aside button .btn-label span {
     letter-spacing: 0.125em;
     font-size: 0.9375rem;
   }
+  .home-section .hero_canvas {
+    max-height: none;
+    min-height: 780px;
+  }
+  .home-section .hero_canvas .canvas_content .gripnr-details .content_heading {
+    font-size: 2rem;
+  }
+  .home-section .hero_canvas .canvas_content .gripnr-details .content_sub_heading {
+    font-size: 1.336rem;
+  }
+  .home-section .hero_canvas .canvas_content .gripnr-details .content_btn .btn_link span {
+    font-family: "owners-xwide";
+    font-size: 0.7375rem;
+    letter-spacing: 0.1em;
+    padding: 9.5px 9px 7.5px;
+    text-transform: uppercase;
+    color: #fafafa;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    border: 2px solid var(--color-dark-rasp);
+    border-radius: 43px;
+  }
 }
-/* Desktop *//*# sourceMappingURL=style.css.map */
+/* Desktop */
+@media (min-width: 1024px) {
+  :root {
+    --vh: 12.6px;
+  }
+  header {
+    padding: 44px 40px 0;
+  }
+  header aside a button span {
+    font-family: "owners-xwide";
+    font-size: 0.813rem;
+    letter-spacing: 0.1em;
+    padding: 9.5px 18px 7.5px;
+    text-transform: uppercase;
+    color: #fafafa;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    border: 2px solid var(--color-dark-rasp);
+    border-radius: 43px;
+  }
+  header aside button .btn-label span {
+    font-size: 1.25rem;
+  }
+  .home-section .hero_canvas {
+    padding-bottom: 80px;
+    height: calc(var(--vh, 1vh) * 100 - 80px);
+    min-height: 680px;
+  }
+  .home-section .hero_canvas .canvas_content .gripnr-details .content_heading {
+    font-size: 2.141rem;
+  }
+  .home-section .hero_canvas .canvas_content .gripnr-details .content_sub_heading {
+    margin: 25.994px 99px 0;
+    font-size: 1.5rem;
+  }
+  .home-section .hero_canvas .canvas_content .gripnr-details .content_btn .btn_link span {
+    font-family: "owners-xwide";
+    font-size: 0.813rem;
+    letter-spacing: 0.1em;
+    padding: 9.5px 18px 7.5px;
+    text-transform: uppercase;
+    color: #fafafa;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    border: 2px solid var(--color-dark-rasp);
+    border-radius: 43px;
+  }
+}/*# sourceMappingURL=style.css.map */
