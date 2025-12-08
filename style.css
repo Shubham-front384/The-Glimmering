@@ -68,12 +68,14 @@ a {
 header {
   position: fixed;
   z-index: 999;
+  width: 100%;
   left: 0;
   right: 0;
   padding: var(--padding-top-first) var(--padding-top-second) 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 5rem;
 }
 header aside a button {
   background: transparent;
@@ -106,24 +108,111 @@ header aside button {
   gap: 10px;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 header aside button .btn-icon {
   position: relative;
+  width: 24px;
+  height: 24px;
 }
-header aside button .btn-icon .icon-to-open svg {
-  width: 25px;
-  height: 25px;
+header aside button .btn-icon .icon-to-open {
+  opacity: 1;
+  pointer-events: auto;
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 header aside button .btn-icon .icon-to-close {
   position: absolute;
+  z-index: 10;
   top: 0;
+  opacity: 0;
+  pointer-events: none;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
-header aside button .btn-icon .icon-to-close svg {
-  width: 25px;
-  height: 25px;
+header aside button .btn-label {
+  position: relative;
+  z-index: 10;
 }
 header aside button .btn-label span {
   display: none;
+}
+header aside button .btn-label .menuName {
+  opacity: 1;
+}
+header aside button .btn-label .closeName {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: -5px;
+  color: #1a1a1a;
+}
+header aside .menu-infos {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--color-burnt-sienna);
+  transform: translateY(100%);
+  opacity: 0;
+}
+header aside .menu-infos .menu {
+  display: grid;
+  position: relative;
+  grid-template-rows: 3fr 2fr;
+  grid-template-columns: none;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+header aside .menu-infos .menu ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 3.75rem;
+}
+header aside .menu-infos .menu ul li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 2.375rem;
+}
+header aside .menu-infos .menu ul li span {
+  font-size: 0.625rem;
+}
+header aside .menu-infos .menu .header_extraContainer {
+  border-top: 1px solid rgba(255, 255, 255, 0.5411764706);
+  padding: 20px 30px 0;
+}
+header aside .menu-infos .menu .header_extraContainer .header_navSocials {
+  display: flex;
+  justify-content: center;
+  gap: 0.625rem;
+}
+header aside .menu-infos .menu .header_extraContainer .header_navSocials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  pointer-events: none;
+  text-decoration: none;
+  background: hsla(48, 38%, 87%, 0.1);
 }
 
 .home-section {
@@ -151,6 +240,9 @@ header aside button .btn-label span {
   width: 100%;
   z-index: 3;
 }
+.home-section .hero_canvas .canvas_content .gripnr-img img {
+  max-width: 828px;
+}
 .home-section .hero_canvas .canvas_content .gripnr-details .content_heading {
   margin: 30px auto 0;
   filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
@@ -176,7 +268,7 @@ header aside button .btn-label span {
   text-align: center;
   color: #eae5d0;
   letter-spacing: 0.15em;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1em;
   font-weight: 200;
 }
@@ -277,6 +369,7 @@ header aside button .btn-label span {
   }
   header {
     padding: 44px 40px 0;
+    height: 7rem;
   }
   header aside a button span {
     font-family: "owners-xwide";
@@ -294,17 +387,49 @@ header aside button .btn-label span {
   header aside button .btn-label span {
     font-size: 1.25rem;
   }
+  header aside .menu-infos .menu {
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: none;
+    padding: 0 120px;
+    max-width: 1800px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: inherit;
+    align-items: center;
+  }
+  header aside .menu-infos .menu ul {
+    height: 100%;
+  }
+  header aside .menu-infos .menu ul li {
+    font-size: 3.446rem;
+  }
+  header aside .menu-infos .menu ul li span {
+    font-size: 1rem;
+  }
+  header aside .menu-infos .header_extraContainer {
+    border-top: 0px !important;
+    border-left: 1px solid;
+    padding: 0px !important;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .home-section .hero_canvas {
     padding-bottom: 80px;
     height: calc(var(--vh, 1vh) * 100 - 80px);
-    min-height: 680px;
+    min-height: 836px;
+  }
+  .home-section .hero_canvas .canvas_content .gripnr-img {
+    margin: 0 81px;
   }
   .home-section .hero_canvas .canvas_content .gripnr-details .content_heading {
-    font-size: 2.141rem;
+    font-size: calc(0.46875rem + 2.5vw);
   }
   .home-section .hero_canvas .canvas_content .gripnr-details .content_sub_heading {
     margin: 25.994px 99px 0;
-    font-size: 1.5rem;
+    font-size: calc(0.390625rem + 1.84524vw);
+    letter-spacing: 0.12em;
   }
   .home-section .hero_canvas .canvas_content .gripnr-details .content_btn .btn_link span {
     font-family: "owners-xwide";
