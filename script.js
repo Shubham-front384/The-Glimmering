@@ -1,3 +1,5 @@
+gsap.registerPlugin(ScrollTrigger);
+
 const header = document.querySelector("header");
 const img = document.querySelector(".heroImg img");
 const heroDetails = document.querySelector(".gripnr-details");
@@ -9,7 +11,25 @@ const closePath = document.querySelectorAll(".icon-to-close svg path");
 const menuInfo = document.querySelector(".menu-infos");
 const menuName = document.querySelector(".menuName");
 const closeName = document.querySelector(".closeName");
+const hero = document.querySelector(".home-section");
+const heroImg = document.querySelector(".hero-logo-img");
 
+// INTRO
+const headBackdrop = document.querySelector(".head_backdrop");
+
+// -------------------- SCROLL BLUR EFFECT WITH GSAP --------------------
+window.addEventListener("scroll", () => {
+  const halfHero = 200;
+  const scrollPos = window.scrollY;
+
+  if (scrollPos > halfHero) {
+    header.classList.add("header-blur");
+    heroImg.style.opacity = 1;
+  } else {
+    header.classList.remove("header-blur");
+    heroImg.style.opacity = 0;
+  }
+});
 // Intro Animation
 const intro = gsap.timeline();
 
@@ -127,9 +147,17 @@ closeIcon.addEventListener("click", () => {
   }, "-=0.2");
 });
 
-// Scroll
-window.addEventListener("scroll", (det) => {
-  console.log(window.scrollY);
-  console.log(det);
-  console.log("Hello");
+// -------------------- TABLETOP --------------------
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to(headBackdrop, {
+  x: 250,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".intro",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+    markers: true,
+  }
 });
