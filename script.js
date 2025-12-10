@@ -22,8 +22,14 @@ const mediaImage = document.querySelector('.media_image');
 const headTitle = document.querySelectorAll('.head-title span');
 const contentText = document.querySelectorAll('.content-text p');
 
+// FEATURES
+const features = document.querySelector(".features");
+const howTitle = document.querySelectorAll(".how-title span");
+const gameBackdrop = document.querySelector(".game_backdrop");
+
 // -------------------- FOLLOW CIRCLE --------------------
 document.body.addEventListener("mousemove", (e) => {
+  circle.style.opacity = 1;
   circle.style.left = e.clientX + "px";
   circle.style.top = e.clientY + "px";
 });
@@ -278,4 +284,86 @@ gsap.from(contentText, {
     trigger: '.section_head',
     start: "top 60%",
   }
+});
+
+// -------------------- FEATURE HEADING --------------------
+gsap.to(howTitle, {
+  x: 25,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: features,
+    start: 'top center',
+    end: 'bottom center',
+    scrub: 5,
+  },
+});
+
+gsap.to(gameBackdrop, {
+  x: 25,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: features,
+    start: 'top center',
+    end: 'bottom center',
+    scrub: window.innerWidth > 1024 ? 2 : 1,
+  },
+});
+
+// -------------------- FEATURE CAROUSEL --------------------
+const swiper = new Swiper(".mySwiper", {
+  slidesPerView: "auto",
+  centeredSlides: true,
+  spaceBetween: 0,
+  speed: 600,
+
+  pagination: {
+    el: ".swiper-pagination",
+    type: "progressbar",
+  },
+
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  }
+});
+
+// -------------------- INITIAL SCALE SETUP --------------------
+swiper.slides.forEach((slide, idx) => {
+  if (idx === swiper.activeIndex) {
+    gsap.set(slide, { scale: 1 });
+  } else {
+    gsap.set(slide, { scale: 0.9 });
+  }
+});
+
+// -------------------- SCALE ANIMATION ON SLIDE CHANGE --------------------
+swiper.on("slideChangeTransitionStart", () => {
+  swiper.slides.forEach((slide, idx) => {
+    if (idx === swiper.activeIndex) {
+      // New active slide → scale up first
+      gsap.to(slide, {
+        scale: 1.05,
+        duration: 0.45,
+        ease: "power2.out"
+      });
+    } else {
+      // Every other slide → scale down
+      gsap.to(slide, {
+        scale: 0.9,
+        duration: 0.45,
+        ease: "power2.out"
+      });
+    }
+  });
+});
+
+// -------------------- SMOOTH SETTLE BACK TO NORMAL SCALE --------------------
+swiper.on("slideChangeTransitionEnd", () => {
+  let activeSlide = swiper.slides[swiper.activeIndex];
+
+  gsap.to(activeSlide, {
+    scale: 1,
+    duration: 0.3,
+    ease: "power1.inOut"
+  });
 });
