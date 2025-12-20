@@ -476,21 +476,22 @@ header aside .menu-infos .menu .header_extraContainer .header_navSocials a {
 }
 .features .swiper {
   width: 100%;
-  max-width: 420px;
+  max-width: 370.081px;
   padding: 30px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 40px;
+  gap: 90px;
   overflow: visible;
 }
 .features .swiper .swiper-wrapper .swiper-slide {
-  width: 85%;
-  height: 568.812px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  min-height: 728.04px;
+  min-width: 370.81px;
+  width: 100%;
+  height: 100%;
   transition: transform 0.4s ease;
+  display: grid;
+  grid-template-rows: 34% 1fr;
 }
 .features .swiper .swiper-wrapper .swiper-slide .card-img {
   margin: 0 auto;
@@ -538,8 +539,7 @@ header aside .menu-infos .menu .header_extraContainer .header_navSocials a {
   line-height: 1.4em;
 }
 .features .swiper .controls-pagination {
-  width: 90%;
-  margin: 25px auto 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -551,8 +551,8 @@ header aside .menu-infos .menu .header_extraContainer .header_navSocials a {
 .features .swiper .controls .swiper-button-prev,
 .features .swiper .controls .swiper-button-next {
   position: static !important;
-  width: 42px;
-  height: 42px;
+  width: 68px;
+  height: 68px;
   border: 2px solid #d72b59;
   display: flex;
   align-items: center;
@@ -576,7 +576,7 @@ header aside .menu-infos .menu .header_extraContainer .header_navSocials a {
   padding: 9px 0;
 }
 .features .swiper .pagination .swiper-pagination-progressbar {
-  height: 4px !important;
+  height: 3px !important;
   background: rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   overflow: hidden;
@@ -584,7 +584,7 @@ header aside .menu-infos .menu .header_extraContainer .header_navSocials a {
   top: 0;
 }
 .features .swiper .pagination .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-  background: #d72b59 !important;
+  background: rgba(215, 43, 89, 0.4901960784) !important;
 }
 .features .swiper .swiper-button-disabled {
   opacity: 0.3;
@@ -647,6 +647,12 @@ header aside .menu-infos .menu .header_extraContainer .header_navSocials a {
   .intro .c_section .section_content {
     padding: 0 4vw;
     align-items: flex-end;
+  }
+  .features .swiper {
+    max-width: 728.062px;
+  }
+  .features .swiper .swiper-wrapper .swiper-slide {
+    grid-template-rows: 66% 1fr;
   }
 }
 /* Desktop */

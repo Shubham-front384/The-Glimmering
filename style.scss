@@ -112,10 +112,7 @@ header {
   @include flexProperty();
   height: 5rem;
 
-  transition: 
-    backdrop-filter 0.4s ease,
-    background 0.4s ease,
-    padding 0.4s ease,
+  transition: backdrop-filter 0.4s ease, background 0.4s ease, padding 0.4s ease,
     height 0.4s ease;
 
   aside {
@@ -281,7 +278,7 @@ header {
   padding: 1rem;
   height: 4rem;
   backdrop-filter: blur(10px);
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .home-section {
@@ -328,7 +325,7 @@ header {
           line-height: 1em;
           font-size: 1.125rem;
           text-align: center;
-          letter-spacing: -.035em;
+          letter-spacing: -0.035em;
         }
 
         .content_sub_heading {
@@ -437,8 +434,8 @@ header {
         display: flex;
         flex-direction: column;
         font-family: var(--font-header-bold);
-        line-height: .875em;
-        letter-spacing: -.035em;
+        line-height: 0.875em;
+        letter-spacing: -0.035em;
 
         span:nth-child(2) {
           background: var(--color-lemonade);
@@ -514,8 +511,8 @@ header {
         align-items: center;
         justify-content: center;
         font-family: var(--font-header-bold);
-        line-height: .875em;
-        letter-spacing: -.035em;
+        line-height: 0.875em;
+        letter-spacing: -0.035em;
 
         span:nth-child(2) {
           background: var(--color-lemonade);
@@ -530,7 +527,7 @@ header {
         letter-spacing: -0.025em;
         margin: 0;
         position: absolute;
-        top: .5rem;
+        top: 0.5rem;
         left: calc(50% - 820px);
         text-align: center;
         user-select: none;
@@ -545,22 +542,23 @@ header {
 
   .swiper {
     width: 100%;
-    max-width: 420px;
+    max-width: 370.081px;
     padding: 30px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 40px;
+    gap: 90px;
     overflow: visible;
 
-  .swiper-wrapper {
+    .swiper-wrapper {
       .swiper-slide {
-        width: 85%;
-        height: 568.812px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        transition: transform .4s ease;
+        min-height: 728.04px;
+        min-width: 370.81px;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.4s ease;
+        display: grid;
+        grid-template-rows: 34% 1fr;
 
         .card-img {
           margin: 0 auto;
@@ -619,8 +617,7 @@ header {
     }
 
     .controls-pagination {
-      width: 90%;
-      margin: 25px auto 0;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -633,8 +630,8 @@ header {
       .swiper-button-prev,
       .swiper-button-next {
         position: static !important;
-        width: 42px;
-        height: 42px;
+        width: 68px;
+        height: 68px;
         border: 2px solid #d72b59;
         display: flex;
         align-items: center;
@@ -660,7 +657,7 @@ header {
       padding: 9px 0;
 
       .swiper-pagination-progressbar {
-        height: 4px !important;
+        height: 3px !important;
         background: rgba(0, 0, 0, 0.15);
         border-radius: 10px;
         overflow: hidden;
@@ -668,7 +665,7 @@ header {
         top: 0;
 
         .swiper-pagination-progressbar-fill {
-          background: #d72b59 !important;
+          background: #d72b597d !important;
         }
       }
     }
@@ -749,6 +746,19 @@ header {
       .section_content {
         padding: 0 4vw;
         align-items: flex-end;
+      }
+    }
+  }
+
+  // Features
+  .features {
+    .swiper {
+      max-width: 728.062px;
+
+      .swiper-wrapper {
+        .swiper-slide {
+          grid-template-rows: 66% 1fr;
+        }
       }
     }
   }

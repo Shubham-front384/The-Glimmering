@@ -309,61 +309,60 @@ gsap.to(gameBackdrop, {
   },
 });
 
-// -------------------- FEATURE CAROUSEL --------------------
+// -------------------- FEATURES SWIPER --------------------
 const swiper = new Swiper(".mySwiper", {
   slidesPerView: "auto",
   centeredSlides: true,
-  spaceBetween: 0,
-  speed: 600,
+  speed: 700,
+  spaceBetween: 30,
+
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
 
   pagination: {
     el: ".swiper-pagination",
     type: "progressbar",
   },
 
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  }
+  on: {
+    init() {
+      const slides = this.slides;
+      gsap.set(slides, { opacity: 0.75 });
+      gsap.set(this.slides[this.activeIndex], { opacity: 1 });
+
+      togglePrevButton(this);
+    },
+
+    slideChangeTransitionStart() {
+      const slides = this.slides;
+      const active = slides[this.activeIndex];
+      const prev = slides[this.previousIndex];
+
+      gsap.to(prev, {
+        opacity: 0.75,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+
+      gsap.to(active, {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+
+      togglePrevButton(this);
+    },
+  },
 });
 
-// -------------------- INITIAL SCALE SETUP --------------------
-swiper.slides.forEach((slide, idx) => {
-  if (idx === swiper.activeIndex) {
-    gsap.set(slide, { scale: 1 });
+function togglePrevButton(swiper) {
+  const prevBtn = document.querySelector(".swiper-button-prev");
+
+  if (swiper.isBeginning) {
+    prevBtn.classList.add("swiper-button-disabled");
   } else {
-    gsap.set(slide, { scale: 0.9 });
+    prevBtn.classList.remove("swiper-button-disabled");
   }
-});
-
-// -------------------- SCALE ANIMATION ON SLIDE CHANGE --------------------
-swiper.on("slideChangeTransitionStart", () => {
-  swiper.slides.forEach((slide, idx) => {
-    if (idx === swiper.activeIndex) {
-      // New active slide → scale up first
-      gsap.to(slide, {
-        scale: 1.05,
-        duration: 0.45,
-        ease: "power2.out"
-      });
-    } else {
-      // Every other slide → scale down
-      gsap.to(slide, {
-        scale: 0.9,
-        duration: 0.45,
-        ease: "power2.out"
-      });
-    }
-  });
-});
-
-// -------------------- SMOOTH SETTLE BACK TO NORMAL SCALE --------------------
-swiper.on("slideChangeTransitionEnd", () => {
-  let activeSlide = swiper.slides[swiper.activeIndex];
-
-  gsap.to(activeSlide, {
-    scale: 1,
-    duration: 0.3,
-    ease: "power1.inOut"
-  });
-});
+}
